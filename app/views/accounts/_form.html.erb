@@ -1,0 +1,13 @@
+<%= form_for [user, account] do |form| %>
+  
+<h3>Donné un libéllé à ce compte</h3>
+
+  <div class="field">
+    <%= form.label :wording %>
+    <%= form.text_field :wording %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
