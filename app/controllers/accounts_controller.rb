@@ -24,7 +24,6 @@ class AccountsController < ApplicationController
   # POST /accounts.json
   def create
     @account = current_user.accounts.build(account_params)
-    @account.gen_id
     respond_to do |format|
       if @account.save
         format.html { redirect_to user_path(current_user), notice: 'Account was successfully created.' }
