@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  in_out: false
+  amount: 1
+  wording: MyString
+
+two:
+  in_out: false
+  amount: 1
+  wording: MyString

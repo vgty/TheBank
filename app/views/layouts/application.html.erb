@@ -12,11 +12,9 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        <%= link_to 'Bank', root_path, :class => 'navbar-brand' %> 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <p style="padding-top: 13px"><strong><%= link_to "#{"\u25A0".encode('utf-8')}TheBank", root_path, :class => 'navbar-brand ' %></strong></p> 
+        
+        <div class="float-right">
           <div class="navbar-nav">
             <% if user_signed_in? %>
               <%= link_to 'Settings', edit_user_registration_path, :class => 'nav-item nav-link' %> 

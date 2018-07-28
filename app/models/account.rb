@@ -2,6 +2,8 @@ class Account < ApplicationRecord
   validates_presence_of :wording
   validates :unique_id, length: { is: 16 }, uniqueness: true
   belongs_to :user
+  has_many :transactions
+  
   before_create :set_unique_id
 
   private
