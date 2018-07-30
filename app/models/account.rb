@@ -15,7 +15,8 @@ class Account < ApplicationRecord
   def generate_unique_id
     loop do
       token = rand.to_s[2..17]
-      break token unless User.where(access_token: token).exists?
+      break token unless User.where(unique_id: token).exists?
     end
   end
+  
 end

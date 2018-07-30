@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cause: MyText
+  identifier: MyString
+  status: MyString
+
+two:
+  cause: MyText
+  identifier: MyString
+  status: MyString
