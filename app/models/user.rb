@@ -6,5 +6,5 @@ class User < ApplicationRecord
          
   has_many :accounts, dependent: :destroy
   has_many :saving_accounts, dependent: :destroy
-  belongs_to :counselor
+  belongs_to :counselor, optional: true
 end

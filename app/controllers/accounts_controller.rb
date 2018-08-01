@@ -4,6 +4,10 @@ class AccountsController < ApplicationController
   # GET /accounts.json
   def index
     @accounts = Account.all
+    respond_to do |format| 
+      format.html { render :index }
+      format.json { render json: @accounts }
+    end
   end
 
   # GET /accounts/1
@@ -25,7 +29,7 @@ class AccountsController < ApplicationController
   def create
     @account = current_user.accounts.build(account_params)
     respond_to do |format|
-      if @account.save
+      if @account.save!
         format.html { redirect_to user_path(current_user), notice: 'Account was successfully created.' }
         format.json { render :show, status: :created, location: current_user }
       else
@@ -67,6 +71,6 @@ class AccountsController < ApplicationController
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params.require(:account).permit(:wording, :user_id)
+      params.require(:account).permit(:wording, :user_id, :counselor)
     end
 end

@@ -3,7 +3,7 @@ class SavingAccount < ApplicationRecord
 
   belongs_to :user
   belongs_to :saving_account_type
-  belongs_to :counselor
+  belongs_to :counselor, optional: true
     
   before_save :set_unique_id
   

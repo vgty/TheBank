@@ -3,7 +3,7 @@ class Litigation < ApplicationRecord
                      presence: true
                      
   before_create :set_identifier
-  belongs_to :counselor
+  belongs_to :counselor, optional: true
 
 
 #Rails Admin custom

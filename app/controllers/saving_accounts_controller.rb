@@ -5,6 +5,10 @@ class SavingAccountsController < ApplicationController
   # GET /saving_accounts.json
   def index
     @saving_accounts = SavingAccount.all
+    respond_to do |format| 
+      format.html { render :index }
+      format.json { render json: @saving_accounts }
+    end
   end
 
   # GET /saving_accounts/1
@@ -27,7 +31,7 @@ class SavingAccountsController < ApplicationController
     @saving_account = current_user.saving_accounts.build(saving_account_params)
     
     respond_to do |format|
-      if @saving_account.save
+      if @saving_account.save!
         format.html { redirect_to user_path(current_user), notice: 'Saving account was successfully created.' }
         format.json { render :show, status: :created, location: current_user }
       else

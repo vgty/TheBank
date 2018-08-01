@@ -1,5 +1,8 @@
-<h3>Your counselor is <%=@user.counselor.name %></h3>
-
+<%if @user.counselor.name%>
+  <h3>Your counselor is <%=@user.counselor.name %></h3>
+<%else%>
+  <h3>You don't have counselor yet</h3>
+<%end%>
 <%=render 'your_accounts'%>
 <%=render 'your_saving_accounts'%>
 

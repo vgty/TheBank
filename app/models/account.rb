@@ -1,11 +1,11 @@
 class Account < ApplicationRecord
-  validates_presence_of :wording, :unique_id, :user_id
+  validates_presence_of :wording, :user_id
   
   belongs_to :user
-  belongs_to :counselor
+  belongs_to :counselor, optional: true
   has_many :transactions, dependent: :destroy
   
-  before_create :set_unique_id
+  before_save :set_unique_id
   
   
   rails_admin do

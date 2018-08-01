@@ -1,6 +1,6 @@
 class Transaction < ApplicationRecord
   belongs_to :account
-  belongs_to :counselor
+  belongs_to :counselor, optional: true
   has_one :litigation
   before_save :credit_or_debit
   
