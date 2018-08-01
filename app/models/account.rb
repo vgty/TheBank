@@ -2,7 +2,8 @@ class Account < ApplicationRecord
   validates_presence_of :wording, :unique_id, :user_id
   
   belongs_to :user
-  has_many :transactions
+  belongs_to :counselor
+  has_many :transactions, dependent: :destroy
   
   before_create :set_unique_id
   
@@ -11,11 +12,13 @@ class Account < ApplicationRecord
     
     create do
       field :wording
-      field :user_id    
+      field :user_id
+      field :counselor
     end
     update do 
       field :wording
       field :user_id
+      field :counselor
     end
   end
   

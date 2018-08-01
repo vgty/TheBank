@@ -3,6 +3,7 @@ class Litigation < ApplicationRecord
                      presence: true
                      
   before_create :set_identifier
+  belongs_to :counselor
 
 
 #Rails Admin custom
@@ -16,7 +17,8 @@ class Litigation < ApplicationRecord
         enum do
           ["nouveau", "encours de traitement", "traité"]
         end
-      end 
+      end
+      field :counselor
     end
     update do 
       field :cause
@@ -25,7 +27,8 @@ class Litigation < ApplicationRecord
         enum do
           ["nouveau", "encours de traitement", "traité"]
         end
-      end 
+      end
+      field :counselor
     end
   end
   

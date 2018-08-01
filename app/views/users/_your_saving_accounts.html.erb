@@ -17,7 +17,7 @@
           <td><%=account.id%></td>
           <td><%=account.unique_id%></td>
           <td><%=account.name%></td>
-          <td><%=account.interest_rate%></td>
+          <td><%=account.saving_account_type.interest_rate%></td>
           <td>
             <%= form_for [current_user, account], method: "delete"  do %>
                   <%= submit_tag "Delete Account", class: "btn btn-danger btn-sm rounded-0" %>

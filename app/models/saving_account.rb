@@ -3,14 +3,9 @@ class SavingAccount < ApplicationRecord
 
   belongs_to :user
   belongs_to :saving_account_type
-  
+  belongs_to :counselor
+    
   before_save :set_unique_id
-  
-
-  def interest_rate
-    account_type = SavingAccountType.find(self.saving_account_type_id)
-    account_type.interest_rate
-  end
   
   rails_admin do
     
@@ -21,8 +16,10 @@ class SavingAccount < ApplicationRecord
         enum do
           [['Père de Famille',1],['Livret A',2],['Actif',3],['Pays Emergents',4]]
         end
-      end 
+      end
+      field :counselor
     end
+    
     update do 
       field :name
       field :user_id
@@ -30,7 +27,8 @@ class SavingAccount < ApplicationRecord
         enum do
           [['Père de Famille',1],['Livret A',2],['Actif',3],['Pays Emergents',4]]
         end
-      end 
+      end
+      field :counselor
     end
   end
   
