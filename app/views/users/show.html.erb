@@ -1,49 +1,5 @@
-<h1 style="margin-bottom: 30px">Your accounts</h1>
-<table class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col">Num.</th>
-      <th scope="col">Unique Id</th>
-      <th scope="col">Wording</th>
-      <th scope="col">Last 3 transactions</th>
-      <th scope="col">Disposal</th>
-      <th scope="col">Destroy acount</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%if @accounts.present?%>
-      <% @accounts.each do |account|%>
-        <tr>
-          <td><%=account.id%></td>
-          <td><%=account.unique_id%></td>
-          <td><%=account.wording%></td>
-          <%if account.transactions.present?%>
-            <td>
-              <%account.transactions.last(3).each do |transaction|%>
-                <div class="d-flex flex-row">
-                  <div class="p-2"><p><%=transaction.wording%>,</p></div>
-                  <div class="p-2"><p><%=transaction.amount%>€</p></div>
-                </div>
-              <%end%>
-            </td>
-            <td>
-              <p><%=disposal(account)%>€</p>
-            </td>
-          <%end%>
-          
-          <td>
-            <%= form_for [current_user, account], method: "delete"  do %>
-                  <%= submit_tag "Delete Account", class: "btn btn-danger btn-sm rounded-0" %>
-            <%end%>
-          </td>
-        </tr>
-      <%end%>
-    <%else%>
-        <p>No accounts yet</p>
-    <%end%>
-  </tbody>
-</table>
-<br>
-<%= link_to 'Create new Account', new_user_account_path(current_user), class: "btn btn-dark btn-sm rounded-0" %> 
+<%=render 'your_accounts'%>
+<%=render 'your_saving_accounts'%>
+
 <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-dark btn-sm rounded-0" %> 
 <%= link_to 'Back', root_path, class: "btn btn-dark btn-sm rounded-0" %>

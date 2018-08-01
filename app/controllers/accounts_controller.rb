@@ -13,7 +13,7 @@ class AccountsController < ApplicationController
 
   # GET /accounts/new
   def new
-    @account = current_user.accounts.build()
+    @account = current_user.accounts.build
   end
 
   # GET /accounts/1/edit
@@ -64,12 +64,9 @@ class AccountsController < ApplicationController
     def set_account
       @account = Account.find(params[:id])
     end
-    def set_user
-      current_user
-    end
-
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params.require(:account).permit(:unique_id, :wording)
+      params.require(:account).permit(:wording, :user_id)
     end
 end

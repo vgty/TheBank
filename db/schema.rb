@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_30_151120) do
+ActiveRecord::Schema.define(version: 2018_07_30_180756) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "unique_id"
@@ -29,6 +29,24 @@ ActiveRecord::Schema.define(version: 2018_07_30_151120) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["transaction_id"], name: "index_litigations_on_transaction_id"
+  end
+
+  create_table "saving_account_types", force: :cascade do |t|
+    t.string "name"
+    t.float "interest_rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "saving_accounts", force: :cascade do |t|
+    t.string "unique_id"
+    t.string "name"
+    t.integer "user_id"
+    t.integer "saving_account_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["saving_account_type_id"], name: "index_saving_accounts_on_saving_account_type_id"
+    t.index ["user_id"], name: "index_saving_accounts_on_user_id"
   end
 
   create_table "transactions", force: :cascade do |t|

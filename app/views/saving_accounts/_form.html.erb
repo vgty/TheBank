@@ -1,0 +1,18 @@
+<%= form_for [user, account] do |form| %>
+  
+<h3>Donné un libéllé à ce compte</h3>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+    
+  <div class="field">
+    <%= form.label :saving_account_type %>
+    <%= form.select :saving_account_type_id, [['Père de Famille',1],['Livret A',2],['Actif',3],['Pays Emergents',4]]%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

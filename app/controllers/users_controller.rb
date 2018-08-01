@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @accounts = current_user.accounts
+    @saving_accounts = current_user.saving_accounts
   end
 
   # GET /users/new

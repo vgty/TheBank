@@ -1,12 +1,37 @@
 class Account < ApplicationRecord
-  validates_presence_of :wording
-  validates :unique_id, length: { is: 16 }, uniqueness: true
+  validates_presence_of :wording, :unique_id, :user_id
+  
   belongs_to :user
   has_many :transactions
   
   before_create :set_unique_id
-
-  private
+  
+  
+  rails_admin do
+    
+    create do
+      field :wording
+      field :user_id    
+    end
+    update do 
+      field :wording
+      field :user_id
+    end
+  end
+  
+  def disposal
+    amount_array(self).sum
+  end
+  
+  def amount_array(account)
+    account.transactions.map do |t|
+      if t.litigation == nil || t.litigation.status == "traité"
+        t.amount
+      else
+        0
+      end
+    end
+  end
 
   def set_unique_id
     self.unique_id = generate_unique_id
@@ -15,7 +40,7 @@ class Account < ApplicationRecord
   def generate_unique_id
     loop do
       token = rand.to_s[2..17]
-      break token unless User.where(unique_id: token).exists?
+      break token unless Account.where(unique_id: token).exists?
     end
   end
   

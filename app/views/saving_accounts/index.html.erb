@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Saving Accounts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @saving_accounts.each do |saving_account| %>
+      <tr>
+        <td><%= link_to 'Show', saving_account %></td>
+        <td><%= link_to 'Edit', edit_saving_account_path(saving_account) %></td>
+        <td><%= link_to 'Destroy', saving_account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Saving Account', new_saving_account_path %>
